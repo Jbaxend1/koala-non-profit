@@ -1,4 +1,3 @@
-const { Router } = require('express');
 const express = require('express');
 const koalaRouter = express.Router();
 
@@ -55,14 +54,16 @@ const currentInventory = [
 ];
 
 // GET
-
+koalaRouter.get('/', (req, res) => {
+    res.send(currentInventory);
+});
 
 // POST
 koalaRouter.post('/', (req, res) => {
     const koala = req.body;
     currentInventory.push(koala);
-    res.sendStatus(201);
-})
+    res.send(koala);
+  });
 
 // PUT
 
