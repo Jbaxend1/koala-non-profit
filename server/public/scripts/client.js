@@ -19,7 +19,7 @@ function setupClickListeners() {
       name: 'testName',
       age: 'testName',
       gender: 'testName',
-      readyForTransfer: 'testName',
+      ready: 'testName',
       notes: 'testName',
     };
     // call saveKoala with the new obejct
@@ -30,11 +30,52 @@ function setupClickListeners() {
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
-  
+  $.ajax ({
+    type: 'GET',
+    url: '/koalas',
+  }).then(function (response) {
+    $('#veiwKoalas').empty();
+    for (let i=0; i<response.length; i++){
+      let koala = response[i];
+        $('#veiwKoalas').append(`
+          <tr>
+            <td>${koala.name}</td>
+            <td>${koala.age}</td>
+            <td>${koala.gender}</td>
+            <td>${koala.ready}</td>
+            <td>${koala.notes}</td>
+          </tr>
+        `)
+    }
+  }).catch(function(error){
+    console.log('error');
+    alert('something is wrong in GET req');
+  })
 } // end getKoalas
 
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
   // ajax call to server to get koalas
  
+}
+
+function sendKoalaToServer () {
+  console.log('in sendKoalaToServer');
+
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: {
+      name: $('#nameIn').val(),
+      age: $('#ageIn').val(),
+      gender: $('#genderIn').val(),
+      ready: $('#readyForTransferIn').val(),
+      notes: $('#notesIn').val()
+    }
+  }).then(function (response) {
+    getKoalas();
+  }).catch (function (error){
+    console.log('error');
+    alert('Something Is Wrong');
+  })
 }
