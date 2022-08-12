@@ -54,3 +54,18 @@ Upon completion of the project you'll need to provide not only the source (via G
 Your final product may look something like this:
 
 ![sample](sample.png)
+
+
+- [x] Delete button id
+- [x] Click handler
+- [ ] Delete function
+
+
+
+- [ ] add modules folder
+- [ ] add pool.js
+- [ ] copy pool.js code
+- [ ] npm install pg
+- [ ] check dependencies for pg
+- [ ] Create database
+- [ ] Create a table with placeholder data
