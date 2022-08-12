@@ -41,8 +41,20 @@ function setupClickListeners() {
 }
 
 function deleteKoala() {
-  console.log('in deleteKoala');
   
+  const koalaId = $(this).data('id');
+  console.log('deleteKoala', koalaId);
+  
+  $.ajax({
+    type: 'DELETE',
+    url: `/koalas/${koalaId}`
+  }).then(function(response){
+    getKoalas();
+  }).catch(function(error) {
+    console.log(error);
+    alert('Something went wrong client DELETE');
+  })
+
 }
 
 function getKoalas() {
@@ -60,26 +72,28 @@ function getKoalas() {
       if (`${koala.ready}` === 'false') {
         $('#viewKoalas').append(`
         <tr>
-        <td>${koala.name}</td>
-        <td>${koala.age}</td>
-        <td>${koala.gender}</td>
-        <td>${koala.ready}</td>
-        <td>${koala.notes}</td>
-        <td><button>Ready for Transfer</button></td>
-        <td><button class="delete-koala">Delete</button></td>
-      </tr>
+          <td>${koala.id}</td>
+          <td>${koala.name}</td>
+          <td>${koala.age}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.ready}</td>
+          <td>${koala.notes}</td>
+          <td><button>Ready for Transfer</button></td>
+          <td><button class="delete-koala" data-id="${koala.id}">Delete</button></td>
+        </tr>
         `);
       } else {
         $('#viewKoalas').append(`
         <tr>
-        <td>${koala.name}</td>
-        <td>${koala.age}</td>
-        <td>${koala.gender}</td>
-        <td>${koala.ready}</td>
-        <td>${koala.notes}</td>
-        <td></td>
-        <td><button class="delete-koala">Delete</button></td>
-      </tr>
+          <td>${koala.id}</td>
+          <td>${koala.name}</td>
+          <td>${koala.age}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.ready}</td>
+          <td>${koala.notes}</td>
+          <td></td>
+          <td><button class="delete-koala" data-id="${koala.id}">Delete</button></td>
+        </tr>
         `);
       }
     }

@@ -55,17 +55,19 @@ Your final product may look something like this:
 
 ![sample](sample.png)
 
-
+## DELETE Setup
 - [x] Delete button id
 - [x] Click handler
 - [ ] Delete function
 
+## PG setup
+- [x] add modules folder
+- [x] add pool.js
+- [x] copy pool.js code
+- [x] npm install pg
+- [x] check dependencies for pg
+- [x] change database in pool.js
+- [x] Create database
+- [x] Create a table with placeholder data
 
 
-- [ ] add modules folder
-- [ ] add pool.js
-- [ ] copy pool.js code
-- [ ] npm install pg
-- [ ] check dependencies for pg
-- [ ] Create database
-- [ ] Create a table with placeholder data
