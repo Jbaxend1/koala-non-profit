@@ -9,6 +9,7 @@ $(document).ready(function () {
 
   // Event delgator
   $('body').on('click', '.delete-koala', deleteKoala);
+  $('body').on('click', '.transfer', updateKoala);
 }); // end doc ready
 
 function setupClickListeners() {
@@ -38,6 +39,8 @@ function setupClickListeners() {
   });
 
   $('.delete-koala').on('click', deleteKoala);
+
+  $('.transfer').on('click', updateKoala);
 }
 
 function deleteKoala() {
@@ -78,7 +81,7 @@ function getKoalas() {
           <td>${koala.gender}</td>
           <td>${koala.ready}</td>
           <td>${koala.notes}</td>
-          <td><button>Ready for Transfer</button></td>
+          <td><button class="transfer" data-id="${koala.id}">Ready for Transfer</button></td>
           <td><button class="delete-koala" data-id="${koala.id}">Delete</button></td>
         </tr>
         `);
@@ -102,6 +105,22 @@ function getKoalas() {
     alert('Something went wrong!')
   })
 } // end getKoalas
+
+function updateKoala () {
+  const koalaId = $(this).data('id');
+  console.log('updateKoala', koalaId);
+
+  $.ajax({
+    type: 'PUT',
+    url: `/koalas/${koalaId}`,
+  }).then(function (response) {
+    getKoalas();
+  }).catch(function (error) {
+    console.log(error);
+    alert('Something went wrong: PUT')
+  });
+
+}
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
