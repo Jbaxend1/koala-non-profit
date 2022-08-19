@@ -1,0 +1,20 @@
+img {
+    max-width: 85px;
+    max-height: 85px;
+}
+
+table {
+    text-align: center;
+    border-radius: 3px;
+    outline: 2px solid rgb(10, 9, 9);
+}
+
+td {
+    outline: 1px solid rgb(99, 99, 99);
+    border-collapse: collapse;
+}
+
+button {
+    background-color:rgba(11, 21, 163, 0.777);
+    color:rgb(159, 157, 161)
+}

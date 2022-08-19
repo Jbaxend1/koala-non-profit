@@ -70,16 +70,16 @@ function getKoalas() {
     console.log(response);
     $('#viewKoalas').empty();
     for (let koala of response) {
+
       // ID from database for delete button
       console.log(`${koala.ready}`);
       if (`${koala.ready}` === 'false') {
         $('#viewKoalas').append(`
         <tr>
-          <td>${koala.id}</td>
           <td>${koala.name}</td>
           <td>${koala.age}</td>
           <td>${koala.gender}</td>
-          <td>${koala.ready}</td>
+          <td>Not Ready</td>
           <td>${koala.notes}</td>
           <td><button class="transfer" data-id="${koala.id}">Ready for Transfer</button></td>
           <td><button class="delete-koala" data-id="${koala.id}">Delete</button></td>
@@ -88,11 +88,10 @@ function getKoalas() {
       } else {
         $('#viewKoalas').append(`
         <tr>
-          <td>${koala.id}</td>
           <td>${koala.name}</td>
           <td>${koala.age}</td>
           <td>${koala.gender}</td>
-          <td>${koala.ready}</td>
+          <td>Ready!</td>
           <td>${koala.notes}</td>
           <td></td>
           <td><button class="delete-koala" data-id="${koala.id}">Delete</button></td>
