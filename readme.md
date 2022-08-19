@@ -55,10 +55,11 @@ Your final product may look something like this:
 
 ![sample](sample.png)
 
+
 ## DELETE Setup
 - [x] Delete button id
 - [x] Click handler
-- [ ] Delete function
+- [x] Delete function
 
 ## PG setup
 - [x] add modules folder
